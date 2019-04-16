@@ -33,12 +33,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import UserService from '@/services/UserService';
+import Vue from 'vue';
 
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
-}
+export default Vue.extend( {
+  mounted() {
+    UserService.getUsersMetrics( '48dd8950-2ae2-4b83-8d00-db51f2c15e58' );
+    // tslint:disable-next-line:no-console
+    console.log( 'Base url: ' + process.env.VUE_APP_TEST );
+    // tslint:disable-next-line:no-console
+    console.log( 'Base url: ' + process.env.TEST );
+      // .then( this.setUserMetrics );
+  },
+
+  methods: {
+    // setUserMetrics: function(payload: string) {
+    //   console.log( process.env.BASE_URL );
+    //   // console.log( process.env.NODE_ENV );
+    //   // console.log(payload);
+    // }
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
